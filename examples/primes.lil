@@ -1,0 +1,24 @@
+(define print-primes-upto (lambda (n)
+  (if (== 1 n)
+    true
+    (begin
+      (if (is-prime n)
+        (print n)
+        true)
+      (print-primes-upto (- n 1))))))
+
+(define is-prime (lambda (n)
+  (define inner (lambda (m)
+    (if (<= m 1)
+      true
+      (if (divides m n)
+        false
+        (inner (- m 1))))))
+  (inner (- n 1))))
+
+(define divides (lambda (small big)
+  (== 0 (mod big small)))) 
+
+(define upto 100)
+(print-primes-upto upto)
+

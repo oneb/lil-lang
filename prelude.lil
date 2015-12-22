@@ -1,0 +1,32 @@
+# tosi ja epätosi määritellään symboleina
+(define true (quote true))
+(define false (quote false))
+
+# kaikki arvot paitsi false ovat "truthy"
+# joten minkä tahansa arvon paitsi falsen negaatio on false
+(define not (lambda (p) 
+  (if (== p false) 
+    true 
+    false)))
+
+# looginen or ja and
+
+(define or (lambda (x y)
+  (if x x y)))
+
+(define and (lambda (x y)
+  (if x y x)))
+
+# johdetut vertailuoperaatiot 
+
+(define != (lambda (x y)
+  (not (== x y))))
+
+(define < (lambda (x y)
+  (not (> x y))))
+
+(define >= (lambda (x y)
+  (or (> x y) (== x y))))
+
+(define <= (lambda (x y)
+  (or (< x y) (== x y))))

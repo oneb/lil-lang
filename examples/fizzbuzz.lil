@@ -1,0 +1,14 @@
+(define fizzbuzz (lambda (i max) 
+  (define fizz? (== 0 (mod i 5)))
+  (define buzz? (== 0 (mod i 3)))
+  (if (and fizz? buzz?)
+    (print "FizzBuzz")
+    (if fizz? 
+      (print "Fizz")
+      (if buzz?
+        (print "Buzz")
+        (print i))))
+  (if (== i max)
+    true
+    (fizzbuzz (+ 1 i) max))))
+
